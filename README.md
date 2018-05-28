@@ -10,7 +10,7 @@ Sign up for Cointopay account at <https://cointopay.com>
 
 ### Via FTP
 
-1. Download [cointopay-virtuemart-v1.0.zip](https://github.com/Cointopay/OSCommerce/releases/download/cointopay-oscommerce-v1.0.zip/cointopay-oscommerce-v1.0.zip)
+1. Download [cointopay-oscommerce-v1.0.zip](https://github.com/Cointopay/OSCommerce/releases/download/cointopay-oscommerce-v1.0.zip/cointopay-oscommerce-v1.0.zip)
 
 2. Extract downloaded zip. Upload *includes* directory and *cointopay_callback.php* file to the *catalog* directory of your OSCommerce installation.
 
