@@ -1,0 +1,3 @@
+<?php
+
+define('COINTOPAY_OSCOMMERCE_EXTENSION_VERSION', '1.0');
