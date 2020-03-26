@@ -16,7 +16,7 @@ Sign up for Cointopay account at <https://cointopay.com>
 
 3. Login to your OSCommerce store admin panel and go to *Modules » Payment*. Click Install module, then click Cointopay International and click Install module again. 
 
-4. Go to *Modules » Payment*, click Cointopay International and click Edit. Enter [API Credentials](http://cointopay.com) (Merchant ID, Security Code). Click *Save*.
+4. Go to *Modules » Payment*, click Cointopay International and click Edit. Enter [API Credentials](http://cointopay.com) (Merchant ID, Security Code, API Key). Click *Save*.
 
 
 ### Support or Contact

@@ -14,6 +14,7 @@ class cointopay
     $this->description      = MODULE_PAYMENT_COINTOPAY_TEXT_DESCRIPTION;
     $this->merchant_id      = MODULE_PAYMENT_COINTOPAY_MERCHANT_ID;
     $this->security_code    = MODULE_PAYMENT_COINTOPAY_SECURITY_CODE;
+	$this->api_key          = MODULE_PAYMENT_COINTOPAY_API_KEY;
     $this->testMode         = ((MODULE_PAYMENT_COINTOPAY_TEST == 'True') ? true : false);
     $this->enabled          = ((MODULE_PAYMENT_COINTOPAY_STATUS == 'True') ? true : false);
   }
@@ -70,7 +71,7 @@ class cointopay
       'price'            => number_format($info['total'], 2, '.', ''),
       'currency'         => $info['currency'],
       'callback_url'     => $this->flash_encode($callback . "?token=" . MODULE_PAYMENT_COINTOPAY_CALLBACK_SECRET),
-      'cancel_url'       => tep_href_link(FILENAME_CHECKOUT_PAYMENT),
+      'cancel_url'       => $this->flash_encode($callback . "?token=" . MODULE_PAYMENT_COINTOPAY_CALLBACK_SECRET), //tep_href_link(FILENAME_CHECKOUT_PAYMENT),
       'success_url'      => tep_href_link(FILENAME_CHECKOUT_SUCCESS),
       'title'            => $configuration->fields['configuration_value'] . ' Order #' . $insert_id,
       'description'      => join($description, ', ')
@@ -82,8 +83,8 @@ class cointopay
       'merchant_id' => MODULE_PAYMENT_COINTOPAY_MERCHANT_ID,
       'security_code' => MODULE_PAYMENT_COINTOPAY_SECURITY_CODE,
       'user_agent' => 'Cointopay - osCommerce Extension v' . COINTOPAY_OSCOMMERCE_EXTENSION_VERSION));
-    echo "<pre>";
-    print_r($order);exit;
+    //echo "<pre>";
+    //print_r($order);exit;
     $_SESSION['cart']->reset(true);
     tep_redirect($order->shortURL);
 
@@ -112,6 +113,7 @@ class cointopay
     tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Cointopay Module', 'MODULE_PAYMENT_COINTOPAY_STATUS', 'False', 'Cointopay International', '6', '0', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now())");
     tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Merchant Id', 'MODULE_PAYMENT_COINTOPAY_MERCHANT_ID', '0', 'Your Cointopay Merchant Id', '6', '0', now())");
     tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Security Code', 'MODULE_PAYMENT_COINTOPAY_SECURITY_CODE', '0', 'Your Cointopay Security Code', '6', '0', now())");
+	tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('API Key', 'MODULE_PAYMENT_COINTOPAY_API_KEY', '0', 'Your Cointopay Api Key', '6', '0', now())");
     tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set Paid Order Status', 'MODULE_PAYMENT_COINTOPAY_PAID_STATUS_ID', '8', 'Status in your store when Cointopay order status is paid.<br />(\'Paid\' recommended)', '6', '6', 'tep_cfg_pull_down_order_statuses(', 'tep_get_order_status_name', now())");
     tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set Failed Order Status', 'MODULE_PAYMENT_COINTOPAY_FAILED_STATUS_ID', '9', 'Status in your store when Cointopay order status is failed.<br />(\'Failed\' recommended)', '6', '6', 'tep_cfg_pull_down_order_statuses(', 'tep_get_order_status_name', now())");
     tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, use_function, date_added) values ('Set Paidnotenough Order Status', 'MODULE_PAYMENT_COINTOPAY_PAIDNOTENOUGH_STATUS_ID', '10', 'Status in your store when Cointopay order status is paidnotenough.<br />(\'Paidnotenough\' recommended)', '6', '6', 'tep_cfg_pull_down_order_statuses(', 'tep_get_order_status_name', now())");
@@ -144,6 +146,7 @@ class cointopay
       'MODULE_PAYMENT_COINTOPAY_STATUS',
       'MODULE_PAYMENT_COINTOPAY_MERCHANT_ID',
       'MODULE_PAYMENT_COINTOPAY_SECURITY_CODE',
+	  'MODULE_PAYMENT_COINTOPAY_API_KEY',
       'MODULE_PAYMENT_COINTOPAY_PAID_STATUS_ID',
       'MODULE_PAYMENT_COINTOPAY_FAILED_STATUS_ID',
       'MODULE_PAYMENT_COINTOPAY_PAIDNOTENOUGH_STATUS_ID'
