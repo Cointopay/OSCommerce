@@ -71,7 +71,7 @@ class cointopay
       'price'            => number_format($info['total'], 2, '.', ''),
       'currency'         => $info['currency'],
       'callback_url'     => $this->flash_encode($callback . "?token=" . MODULE_PAYMENT_COINTOPAY_CALLBACK_SECRET),
-      'cancel_url'       => $this->flash_encode($callback . "?token=" . MODULE_PAYMENT_COINTOPAY_CALLBACK_SECRET), //tep_href_link(FILENAME_CHECKOUT_PAYMENT),
+      'cancel_url'       => tep_href_link(FILENAME_CHECKOUT_PAYMENT),
       'success_url'      => tep_href_link(FILENAME_CHECKOUT_SUCCESS),
       'title'            => $configuration->fields['configuration_value'] . ' Order #' . $insert_id,
       'description'      => join($description, ', ')
