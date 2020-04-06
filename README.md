@@ -7,6 +7,8 @@ Cointopay plugin for OSCommerce store!
 
 Sign up for Cointopay account at <https://cointopay.com>
 
+Please follow the OSCommerce Cointopay Plugin install instructions mentioned here: <a href="https://docs.google.com/document/d/1yRpIeKLJFxYY-sQlrELICaDPMN5k3INdCOolH5FZqmw/edit?usp=sharing">download OSCommerce Cointopay Plugin documentation</a> or direct link: https://docs.google.com/document/d/1yRpIeKLJFxYY-sQlrELICaDPMN5k3INdCOolH5FZqmw/edit?usp=sharing
+
 
 ### Via FTP
 
@@ -16,7 +18,7 @@ Sign up for Cointopay account at <https://cointopay.com>
 
 3. Login to your OSCommerce store admin panel and go to *Modules » Payment*. Click Install module, then click Cointopay International and click Install module again. 
 
-4. Go to *Modules » Payment*, click Cointopay International and click Edit. Enter [API Credentials](http://cointopay.com) (Merchant ID, Security Code, API Key). Click *Save*.
+4. Go to *Modules » Payment*, click Cointopay International and click Edit. Enter [API Credentials](http://cointopay.com) (Merchant ID, Security Code). Click *Save*.
 
 
 ### Support or Contact

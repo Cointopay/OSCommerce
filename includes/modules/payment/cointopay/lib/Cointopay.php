@@ -100,7 +100,7 @@ class Cointopay
             CURLOPT_USERAGENT => $user_agent
         ));
         $response = json_decode(curl_exec($curl), TRUE);
-        if (is_string($response)){
+        if (is_string($response) && $response != 'testmerchant success'){
 				\cointopay\Exception::throwException(401, array('reason' => 'BadCredentials:'.$response));
 		}
         $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
